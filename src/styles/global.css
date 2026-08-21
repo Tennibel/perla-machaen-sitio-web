@@ -1,4 +1,4 @@
-e/* ============================================================
+/* ============================================================
    PERLA MACHAEN — Sistema de estilo global
    Lujo consciente: marfil, arena, verde salvia, dorado suave,
    blanco cálido y negro verdoso. Tipografías editoriales.
@@ -152,8 +152,10 @@ h5 {
 
 /* ============================================================
    Scroll reveal — animaciones fluidas al hacer scroll
+   Solo se ocultan cuando JS está activo (html.js), para que el
+   contenido nunca quede invisible si el script falla.
    ============================================================ */
-.reveal {
+.js .reveal {
   opacity: 0;
   transform: translateY(60px);
   transition:
@@ -162,19 +164,19 @@ h5 {
   will-change: opacity, transform;
 }
 
-.reveal[data-reveal='left'] {
+.js .reveal[data-reveal='left'] {
   transform: translateX(-80px);
 }
 
-.reveal[data-reveal='right'] {
+.js .reveal[data-reveal='right'] {
   transform: translateX(80px);
 }
 
-.reveal[data-reveal='scale'] {
+.js .reveal[data-reveal='scale'] {
   transform: scale(0.9);
 }
 
-.reveal.is-visible {
+.js .reveal.is-visible {
   opacity: 1;
   transform: none;
 }

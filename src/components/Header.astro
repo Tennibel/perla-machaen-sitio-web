@@ -118,16 +118,16 @@ const navSecundaria = navItems.filter(
     position: sticky;
     top: 0;
     z-index: 200;
-    background: rgba(250, 246, 238, 0.92);
+    background: rgba(29, 36, 32, 0.94);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 1px 0 rgba(29, 36, 32, 0.08);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
   }
 
   /* === Barra superior promocional === */
   .header__topbar {
-    background: linear-gradient(90deg, var(--negro-verdoso), var(--negro-verdoso-suave));
-    color: var(--marfil);
+    background: var(--arena);
+    color: var(--negro-verdoso);
     font-size: 0.82rem;
     letter-spacing: 0.02em;
   }
@@ -145,8 +145,8 @@ const navSecundaria = navItems.filter(
     margin: 0;
   }
   .topbar__badge {
-    background: var(--dorado);
-    color: #fff;
+    background: var(--negro-verdoso);
+    color: var(--dorado-suave);
     font-size: 0.65rem;
     font-weight: 600;
     letter-spacing: 0.12em;
@@ -155,14 +155,14 @@ const navSecundaria = navItems.filter(
     border-radius: var(--radius-pill);
   }
   .topbar__cta {
-    color: var(--dorado-suave);
+    color: var(--salvia-oscura);
     font-weight: 500;
     letter-spacing: 0.03em;
     white-space: nowrap;
     transition: color 0.3s ease;
   }
   .topbar__cta:hover {
-    color: #fff;
+    color: var(--dorado);
   }
 
   /* === Barra principal === */
@@ -177,6 +177,7 @@ const navSecundaria = navItems.filter(
   .brand__logo {
     width: 142px;
     height: auto;
+    filter: brightness(0) invert(1);
   }
 
   .nav__list {
@@ -195,7 +196,7 @@ const navSecundaria = navItems.filter(
     font-size: 0.86rem;
     font-weight: 400;
     letter-spacing: 0.02em;
-    color: var(--negro-verdoso);
+    color: rgba(253, 251, 247, 0.88);
     padding: 0.5rem 0.15rem;
     position: relative;
     white-space: nowrap;
@@ -204,25 +205,8 @@ const navSecundaria = navItems.filter(
     cursor: pointer;
   }
 
-  .nav__link::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0;
-    height: 2px;
-    background: var(--dorado);
-    border-radius: 2px;
-    transition: width 0.3s ease;
-  }
-
-  .nav__link:hover::after,
-  .nav__link.is-active::after {
-    width: 100%;
-  }
-
   .nav__link.is-active {
-    color: var(--salvia-oscura);
+    color: var(--dorado-suave);
     font-weight: 500;
   }
 
@@ -300,13 +284,13 @@ const navSecundaria = navItems.filter(
   }
   .header__btn--ghost {
     background: transparent;
-    color: var(--negro-verdoso);
-    border-color: rgba(29, 36, 32, 0.3);
+    color: var(--dorado-suave);
+    border-color: rgba(216, 192, 138, 0.6);
   }
   .header__btn--ghost:hover {
-    background: var(--negro-verdoso);
-    border-color: var(--negro-verdoso);
-    color: var(--marfil);
+    background: var(--dorado-suave);
+    border-color: var(--dorado-suave);
+    color: var(--negro-verdoso);
   }
 
   /* === Toggle móvil === */
@@ -321,7 +305,7 @@ const navSecundaria = navItems.filter(
     display: block;
     width: 24px;
     height: 2px;
-    background: var(--negro-verdoso);
+    background: var(--marfil);
     margin: 5px 0;
     transition: 0.3s ease;
   }
@@ -346,7 +330,7 @@ const navSecundaria = navItems.filter(
       position: fixed;
       inset: 0;
       top: 0;
-      background: var(--marfil);
+      background: var(--negro-verdoso);
       flex-direction: column;
       align-items: flex-start;
       padding: 5rem var(--gutter) 2rem;

@@ -4,6 +4,8 @@ import PageHero from '../components/PageHero.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { temasConferencia } from '../data/site';
 
+const BASE = import.meta.env.BASE_URL;
+
 const tiposEvento = [
   'Congresos y cumbres',
   'Eventos corporativos',
@@ -65,7 +67,7 @@ const tiposEvento = [
   <section class="section reel">
     <div class="container reel__inner">
       <div class="reel__media">
-        <img src="/images/stock/conferencia-publico.jpg" alt="Reel de Perla Machaen en escenario" width="534" height="534" loading="lazy" />
+        <img src={`${BASE}images/stock/conferencia-publico.jpg`} alt="Reel de Perla Machaen en escenario" width="534" height="534" loading="lazy" />
         <span class="reel__play" aria-hidden="true">▶</span>
       </div>
       <div>

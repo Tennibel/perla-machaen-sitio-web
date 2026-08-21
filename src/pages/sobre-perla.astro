@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import CtaBand from '../components/CtaBand.astro';
 
+const BASE = import.meta.env.BASE_URL;
+
 const hitos = [
   { etapa: 'Origen y logro', titulo: 'Líder #1 en Real Estate de lujo en Miami', texto: 'Una de las personas más influyentes en la industria, #1 en ventas por más de 11 años consecutivos, condecorada por la Casa Blanca y host de «House Hunters International».' },
   { etapa: 'Inquietud y descubrimiento', titulo: 'De la propiedad al bienestar del espacio', texto: 'La experiencia con propiedades de alto valor le reveló una verdad: un espacio no solo debe verse bien, debe hacer sentir bien a quien lo habita.' },
@@ -48,9 +50,9 @@ const hitos = [
   <!-- MURAL -->
   <section class="section mural">
     <div class="container mural__grid">
-      <img src="/images/Perla_02_VF.jpg" alt="Perla Machaen" width="534" height="534" loading="lazy" />
-      <img src="/images/Perla_04_VF.jpg" alt="Perla Machaen en escenario" width="534" height="534" loading="lazy" />
-      <img src="/images/Perla_06_VF.jpg" alt="Perla Machaen retrato editorial" width="534" height="534" loading="lazy" />
+      <img src={`${BASE}images/Perla_02_VF.jpg`} alt="Perla Machaen" width="534" height="534" loading="lazy" />
+      <img src={`${BASE}images/Perla_04_VF.jpg`} alt="Perla Machaen en escenario" width="534" height="534" loading="lazy" />
+      <img src={`${BASE}images/Perla_06_VF.jpg`} alt="Perla Machaen retrato editorial" width="534" height="534" loading="lazy" />
     </div>
   </section>
 

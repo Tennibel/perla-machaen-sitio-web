@@ -1,13 +1,14 @@
 ---
 import { navItems, siteInfo } from '../data/site';
 
+const BASE = import.meta.env.BASE_URL;
 const year = new Date().getFullYear();
 ---
 
 <footer class="footer">
   <div class="container footer__grid">
     <div class="footer__brand">
-      <img src="/images/Logo_Perla_Machaen.png" alt={`${siteInfo.nombre} logo`} width="170" height="75" loading="lazy" />
+      <img src={`${BASE}images/Logo_Perla_Machaen.png`} alt={`${siteInfo.nombre} logo`} width="170" height="75" loading="lazy" />
       <p class="footer__tagline">El futuro del hogar es saludable.</p>
       <p class="footer__text">
         Empresaria, conferencista y pionera en casas saludables, longevidad y bienestar.

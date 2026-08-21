@@ -1,6 +1,8 @@
 ---
 import { navItems, siteInfo } from '../data/site';
 
+const BASE = import.meta.env.BASE_URL;
+
 // Marca la ruta activa comparando contra la URL actual
 const currentPath = Astro.url.pathname;
 
@@ -31,7 +33,7 @@ const navSecundaria = navItems.filter(
     <div class="container header__bar">
       <a href="/" class="brand" aria-label={`${siteInfo.nombre} — inicio`}>
         <img
-          src="/images/Logo_Perla_Machaen.png"
+          src={`${BASE}images/Logo_Perla_Machaen.png`}
           alt={`${siteInfo.nombre} logo`}
           class="brand__logo"
           width="150"

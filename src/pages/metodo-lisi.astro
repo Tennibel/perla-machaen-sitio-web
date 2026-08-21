@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import CtaBand from '../components/CtaBand.astro';
 
+const BASE = import.meta.env.BASE_URL;
+
 const perfilLisi = [
   'Realtors y agentes inmobiliarios',
   'Arquitectos e interioristas',
@@ -138,7 +140,7 @@ const faqs = [
   <section class="section autoridad">
     <div class="container autoridad__grid">
       <div class="autoridad__media">
-        <img src="/images/stock/interior-moderno.jpg" alt="Perla Machaen, autoridad en real estate y bienestar" width="534" height="534" loading="lazy" />
+        <img src={`${BASE}images/stock/interior-moderno.jpg`} alt="Perla Machaen, autoridad en real estate y bienestar" width="534" height="534" loading="lazy" />
       </div>
       <div>
         <span class="eyebrow">Autoridad de Perla</span>

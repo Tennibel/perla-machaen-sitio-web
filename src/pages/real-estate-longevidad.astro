@@ -3,12 +3,14 @@ import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import CtaBand from '../components/CtaBand.astro';
 
+const BASE = import.meta.env.BASE_URL;
+
 const desarrollos = [
-  { img: '/images/Condo_01_OkV.jpg', titulo: 'The Estates at Acqualina' },
-  { img: '/images/Condo_02_Ok.jpg', titulo: 'Turnberry Ocean Club' },
-  { img: '/images/Condo_03_Ok.jpg', titulo: 'Ritz-Carlton Residences' },
-  { img: '/images/Condo_04_Ok.jpg', titulo: 'Jade Signature' },
-  { img: '/images/Condo_05_Ok.jpg', titulo: 'Aston Martin Residences' },
+  { img: `${BASE}images/Condo_01_OkV.jpg`, titulo: 'The Estates at Acqualina' },
+  { img: `${BASE}images/Condo_02_Ok.jpg`, titulo: 'Turnberry Ocean Club' },
+  { img: `${BASE}images/Condo_03_Ok.jpg`, titulo: 'Ritz-Carlton Residences' },
+  { img: `${BASE}images/Condo_04_Ok.jpg`, titulo: 'Jade Signature' },
+  { img: `${BASE}images/Condo_05_Ok.jpg`, titulo: 'Aston Martin Residences' },
 ];
 ---
 
@@ -72,7 +74,7 @@ const desarrollos = [
   <section class="section wellness">
     <div class="container wellness__grid">
       <div class="wellness__media">
-        <img src="/images/stock/residencia-lujo.jpg" alt="The Wellness Habitat Company" width="534" height="534" loading="lazy" />
+        <img src={`${BASE}images/stock/residencia-lujo.jpg`} alt="The Wellness Habitat Company" width="534" height="534" loading="lazy" />
       </div>
       <div>
         <span class="eyebrow">Wellness Habitat</span>

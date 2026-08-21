@@ -1,4 +1,4 @@
----
+fectos tip---
 interface Props {
   eyebrow?: string;
   title: string;
@@ -16,6 +16,9 @@ const {
   imageAlt = '',
   align = 'center',
 } = Astro.props;
+
+const BASE = import.meta.env.BASE_URL;
+const imageSrc = image ? (image.startsWith('/') ? BASE + image.slice(1) : image) : image;
 ---
 
 <section class:list={['page-hero', { 'page-hero--center': align === 'center' }]}>
@@ -28,7 +31,7 @@ const {
     </div>
     {image && (
       <figure class="page-hero__media">
-        <img src={image} alt={imageAlt} width="1200" height="640" loading="eager" />
+        <img src={imageSrc} alt={imageAlt} width="1200" height="640" loading="eager" />
       </figure>
     )}
   </div>

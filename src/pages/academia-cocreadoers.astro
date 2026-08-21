@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import CtaBand from '../components/CtaBand.astro';
 
+const BASE = import.meta.env.BASE_URL;
+
 const paraQuien = [
   'Quienes quieren transformar su realidad',
   'Emprendedores que buscan propósito',
@@ -82,7 +84,7 @@ const cursos = [
   <section class="section comunidad" id="ingreso">
     <div class="container comunidad__grid">
       <div class="comunidad__media">
-        <img src="/images/stock/bienestar.jpg" alt="Comunidad CocreaDoers" width="534" height="534" loading="lazy" />
+        <img src={`${BASE}images/stock/bienestar.jpg`} alt="Comunidad CocreaDoers" width="534" height="534" loading="lazy" />
       </div>
       <div>
         <span class="eyebrow">Comunidad y mentorías</span>

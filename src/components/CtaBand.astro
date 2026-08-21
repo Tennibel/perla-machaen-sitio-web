@@ -1,4 +1,4 @@
----
+slide---
 interface Props {
   eyebrow?: string;
   title: string;
@@ -20,9 +20,11 @@ const {
 } = Astro.props;
 
 const hasSecondary = !!secondaryLabel;
+
+const BASE = import.meta.env.BASE_URL;
 ---
 
-<section class="cta-band">
+<section class="cta-band" style={`background-image: linear-gradient(rgba(29,36,32,0.93), rgba(29,36,32,0.93)), url(${BASE}images/Condo_02_Ok.jpg)`}>
   <div class="container cta-band__inner">
     <span class="eyebrow center">{eyebrow}</span>
     <h2 class="cta-band__title">{title}</h2>
@@ -36,9 +38,9 @@ const hasSecondary = !!secondaryLabel;
 
 <style>
   .cta-band {
-    background:
-      linear-gradient(rgba(29, 36, 32, 0.93), rgba(29, 36, 32, 0.93)),
-      url('/images/Condo_02_Ok.jpg') center/cover no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: var(--marfil);
     padding-block: clamp(3.5rem, 7vw, 5.5rem);
   }

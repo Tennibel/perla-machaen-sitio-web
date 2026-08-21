@@ -1,0 +1,38 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Página no encontrada" noIndex>
+  <section class="notfound">
+    <div class="container notfound__inner">
+      <span class="eyebrow center">Error 404</span>
+      <h1>El futuro del hogar es saludable, esta página no.</h1>
+      <p>La página que buscas no existe o fue movida a una nueva ruta.</p>
+      <a href="/" class="btn btn--gold btn--lg">Volver al inicio</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .notfound {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .notfound__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 640px;
+  }
+  .notfound h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    margin-block: 1rem;
+  }
+  .notfound p {
+    color: var(--tinta-suave);
+    margin-bottom: 1.8rem;
+  }
+</style>

@@ -1,0 +1,263 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import { siteInfo } from '../data/site';
+
+const intenciones = [
+  { id: 'lisi', label: 'Método LISI', hint: 'Aplicar o información sobre la certificación' },
+  { id: 'conferencia', label: 'Conferencia', hint: 'Invitar a Perla a un evento' },
+  { id: 'academia', label: 'Academia', hint: 'Unirme a CocreaDoers' },
+  { id: 'prensa', label: 'Prensa / Alianza', hint: 'Cobertura o alianza estratégica' },
+  { id: 'general', label: 'Consulta general', hint: 'Otra consulta' },
+];
+---
+
+<Layout
+  title="Contacto"
+  description="Contacta al equipo de Perla Machaen: Método LISI, conferencias, academia, prensa y alianzas."
+>
+  <PageHero
+    eyebrow="Contacto"
+    title="Cada conversación empieza por la puerta correcta."
+    subtitle="Selecciona tu intención y te conectaremos con la ruta adecuada."
+  />
+
+  <section class="section contacto">
+    <div class="container contacto__grid">
+      <div class="contacto__info">
+        <h2 class="contacto__heading">¿Qué necesitas?</h2>
+        <div class="intenciones" id="intenciones">
+          {
+            intenciones.map((int, i) => (
+              <button
+                class:list={['intencion', { 'is-active': i === 0 }]}
+                data-intencion={int.id}
+                type="button"
+              >
+                <span class="intencion__label">{int.label}</span>
+                <span class="intencion__hint">{int.hint}</span>
+              </button>
+            ))
+          }
+        </div>
+
+        <div class="contacto__directo">
+          <h3>Prefieres hablar directo?</h3>
+          <a href={siteInfo.whatsapp} target="_blank" rel="noopener" class="btn btn--gold btn--lg">Escribir por WhatsApp</a>
+        </div>
+      </div>
+
+      <form class="form" name="contacto" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contacto" />
+        <input type="hidden" name="intencion" id="intencionSeleccionada" value="lisi" />
+        <p class="hidden"><label>No llenar: <input name="bot-field" /></label></p>
+
+        <div class="form__grid">
+          <label>
+            Nombre
+            <input type="text" name="nombre" required />
+          </label>
+          <label>
+            Correo electrónico
+            <input type="email" name="email" required />
+          </label>
+        </div>
+        <label>
+          Mensaje
+          <textarea name="mensaje" rows="5" placeholder="Cuéntanos cómo podemos ayudarte…"></textarea>
+        </label>
+        <button type="submit" class="btn btn--gold btn--lg">Enviar mensaje</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="section datos">
+    <div class="container datos__grid">
+      <div class="dato">
+        <span class="dato__icono">✉</span>
+        <span class="dato__label">Email</span>
+        <a href={`mailto:${siteInfo.email}`}>{siteInfo.email}</a>
+      </div>
+      <div class="dato">
+        <span class="dato__icono">◈</span>
+        <span class="dato__label">Redes sociales</span>
+        <div class="dato__links">
+          <a href={siteInfo.instagram} target="_blank" rel="noopener">Instagram</a>
+          <a href={siteInfo.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+          <a href={siteInfo.facebook} target="_blank" rel="noopener">Facebook</a>
+        </div>
+      </div>
+      <div class="dato">
+        <span class="dato__icono">◈</span>
+        <span class="dato__label">Ubicación</span>
+        <span>Miami, Florida</span>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const botones = Array.from(document.querySelectorAll<HTMLButtonElement>('.intencion'));
+  const campoIntencion = document.getElementById('intencionSeleccionada') as HTMLInputElement | null;
+
+  botones.forEach((boton) => {
+    boton.addEventListener('click', () => {
+      botones.forEach((b) => b.classList.remove('is-active'));
+      boton.classList.add('is-active');
+      if (campoIntencion) {
+        campoIntencion.value = boton.dataset.intencion ?? '';
+      }
+    });
+  });
+</script>
+
+<style>
+  .contacto__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  .intenciones {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    margin-top: 1.5rem;
+  }
+  .intencion {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    text-align: left;
+    padding: 1rem 1.3rem;
+    border-radius: var(--radius);
+    border: 1px solid rgba(29, 36, 32, 0.12);
+    background: var(--blanco-calido);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .intencion:hover {
+    border-color: var(--dorado);
+  }
+  .intencion.is-active {
+    border-color: var(--negro-verdoso);
+    background: var(--negro-verdoso);
+  }
+  .intencion__label {
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--negro-verdoso);
+  }
+  .intencion.is-active .intencion__label {
+    color: var(--dorado-suave);
+  }
+  .intencion__hint {
+    font-size: 0.85rem;
+    color: var(--tinta-suave);
+  }
+  .intencion.is-active .intencion__hint {
+    color: rgba(250, 246, 238, 0.7);
+  }
+
+  .contacto__directo {
+    margin-top: 2rem;
+    background: var(--arena);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+  }
+  .contacto__directo h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .form {
+    background: var(--blanco-calido);
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+  .form__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .form label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    color: var(--negro-verdoso-suave);
+  }
+  .form input,
+  .form textarea {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 0.98rem;
+    padding: 0.8rem 1rem;
+    border: 1px solid rgba(29, 36, 32, 0.15);
+    border-radius: 10px;
+    background: #fff;
+    color: var(--negro-verdoso);
+  }
+  .form input:focus,
+  .form textarea:focus {
+    outline: none;
+    border-color: var(--dorado);
+    box-shadow: 0 0 0 3px rgba(185, 152, 78, 0.15);
+  }
+  .hidden {
+    display: none;
+  }
+
+  .datos {
+    background: var(--negro-verdoso);
+    color: var(--marfil);
+  }
+  .datos__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .dato {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .dato__icono {
+    font-size: 1.5rem;
+    color: var(--dorado-suave);
+  }
+  .dato__label {
+    font-size: 0.74rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--dorado);
+  }
+  .dato a {
+    color: var(--marfil);
+    transition: color 0.3s ease;
+  }
+  .dato a:hover {
+    color: var(--dorado-suave);
+  }
+  .dato__links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  @media (max-width: 860px) {
+    .contacto__grid {
+      grid-template-columns: 1fr;
+    }
+    .datos__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

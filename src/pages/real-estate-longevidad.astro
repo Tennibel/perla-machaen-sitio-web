@@ -1,0 +1,177 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const desarrollos = [
+  { img: '/images/Condo_01_OkV.jpg', titulo: 'The Estates at Acqualina' },
+  { img: '/images/Condo_02_Ok.jpg', titulo: 'Turnberry Ocean Club' },
+  { img: '/images/Condo_03_Ok.jpg', titulo: 'Ritz-Carlton Residences' },
+  { img: '/images/Condo_04_Ok.jpg', titulo: 'Jade Signature' },
+  { img: '/images/Condo_05_Ok.jpg', titulo: 'Aston Martin Residences' },
+];
+---
+
+<Layout
+  title="Real Estate de Longevidad"
+  description="Real Estate de Longevidad: la nueva categoría inmobiliaria que integra salud, bienestar y valor patrimonial."
+>
+  <PageHero
+    eyebrow="Real Estate de Longevidad"
+    title="El inmueble como activo de bienestar, no solo patrimonial."
+    subtitle="Una nueva categoría que integra salud ambiental, biohacking espacial, diseño consciente y valor inmobiliario."
+    image="/images/stock/casa-lujo.jpg"
+    imageAlt="Residencia wellness de lujo"
+  >
+    <div class="hero-actions">
+      <a href="#vision" class="btn btn--gold btn--lg">Conocer la visión</a>
+      <a href="/metodo-lisi/" class="btn btn--outline btn--lg">Conocer el Método LISI</a>
+    </div>
+  </PageHero>
+
+  <!-- QUÉ ES -->
+  <section class="section vision" id="vision">
+    <div class="container vision__grid">
+      <div>
+        <span class="eyebrow">Qué es la categoría</span>
+        <h2 class="titulo">Donde la salud se vuelve parte del valor.</h2>
+      </div>
+      <div>
+        <p class="lead">
+          El Real Estate de Longevidad deja de medir el inmueble solo por ubicación, vistas o acabados:
+          integra salud ambiental, biohacking espacial, diseño consciente y bienestar como variables de valor.
+          El inmueble se convierte en un activo que cuida a quien lo habita.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAYECTORIA EN MIAMI -->
+  <section class="section trayectoria">
+    <div class="container">
+      <span class="eyebrow center">Trayectoria en Miami</span>
+      <h2 class="titulo center">Una autoridad construida en los desarrollos más exclusivos.</h2>
+      <p class="lead center">
+        Más de una década liderando el Real Estate de lujo en Miami le dio a Perla la experiencia para
+        entender el verdadero valor de un espacio.
+      </p>
+      <div class="trayectoria__grid">
+        {
+          desarrollos.map((d) => (
+            <figure class="desarrollo-card">
+              <img src={d.img} alt={d.titulo} width="732" height="394" loading="lazy" />
+              <figcaption>{d.titulo}</figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- WELLNESS HABITAT -->
+  <section class="section wellness">
+    <div class="container wellness__grid">
+      <div class="wellness__media">
+        <img src="/images/stock/residencia-lujo.jpg" alt="The Wellness Habitat Company" width="534" height="534" loading="lazy" />
+      </div>
+      <div>
+        <span class="eyebrow">Wellness Habitat</span>
+        <h2 class="titulo">Pionera en espacios interiores saludables desde 2018.</h2>
+        <p class="lead">
+          The Wellness Habitat Company, fundada por Perla Machaen y su esposo, fue el origen empresarial
+          de una visión: crear y mantener espacios interiores que cuidan la salud física y mental.
+        </p>
+        <a href="/sobre-perla/" class="btn btn--dark">Conocer la historia</a>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    eyebrow="Puente a LISI y conferencias"
+    title="Esta visión se profesionaliza y se lleva al escenario."
+    text="Convierte el Real Estate de Longevidad en una especialidad profesional o invita a Perla a compartirla con tu audiencia."
+    primaryLabel="Conocer el Método LISI"
+    primaryHref="/metodo-lisi/"
+    secondaryLabel="Solicitar conferencia"
+    secondaryHref="/conferencias/"
+  />
+</Layout>
+
+<style>
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.9rem;
+    margin-top: 2rem;
+  }
+
+  .vision__grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  .trayectoria {
+    background: var(--arena);
+  }
+  .trayectoria .lead {
+    margin-inline: auto;
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  .trayectoria__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  .desarrollo-card {
+    background: var(--blanco-calido);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+  }
+  .desarrollo-card img {
+    width: 100%;
+    aspect-ratio: 732 / 394;
+    object-fit: cover;
+  }
+  .desarrollo-card figcaption {
+    padding: 0.9rem 1.1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+
+  .wellness {
+    background: var(--blanco-calido);
+  }
+  .wellness__grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .wellness__media img {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+  }
+  .wellness__grid .btn {
+    margin-top: 1.6rem;
+  }
+
+  @media (max-width: 900px) {
+    .vision__grid,
+    .wellness__grid {
+      grid-template-columns: 1fr;
+    }
+    .trayectoria__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 560px) {
+    .trayectoria__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

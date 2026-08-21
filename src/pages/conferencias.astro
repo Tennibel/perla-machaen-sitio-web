@@ -1,0 +1,284 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { temasConferencia } from '../data/site';
+
+const tiposEvento = [
+  'Congresos y cumbres',
+  'Eventos corporativos',
+  'Wellness y salud',
+  'Arquitectura y diseño',
+  'Real Estate',
+  'Liderazgo femenino',
+];
+---
+
+<Layout
+  title="Conferencias"
+  description="Invita a Perla Machaen como conferencista: charlas sobre casas saludables, longevidad, real estate y bienestar."
+>
+  <PageHero
+    eyebrow="Conferencista"
+    title="Conferencias que despiertan una nueva conciencia sobre el hogar."
+    subtitle="Perla Machaen lleva al escenario una visión que une real estate, longevidad, biohacking espacial y bienestar."
+    image="/images/stock/conferencia-escenario.jpg"
+    imageAlt="Perla Machaen en escenario"
+  >
+    <div class="hero-actions">
+      <a href="#booking" class="btn btn--gold btn--lg">Solicitar conferencia</a>
+      <a href="/prensa/" class="btn btn--outline btn--lg">Ver credenciales</a>
+    </div>
+  </PageHero>
+
+  <!-- TEMAS -->
+  <section class="section temas">
+    <div class="container">
+      <span class="eyebrow center">Temas de conferencia</span>
+      <h2 class="titulo center">Charlas que transforman la forma de ver el espacio.</h2>
+      <div class="temas__grid">
+        {
+          temasConferencia.map((tema, i) => (
+            <article class="tema-card">
+              <span class="tema-card__num">0{i + 1}</span>
+              <h3>{tema.titulo}</h3>
+              <p>{tema.descripcion}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- TIPOS DE EVENTO -->
+  <section class="section tipos">
+    <div class="container">
+      <span class="eyebrow center">Tipos de evento</span>
+      <h2 class="titulo center">Diseñada para cada audiencia.</h2>
+      <div class="tipos__grid">
+        {tiposEvento.map((tipo) => <span class="tipo-card">{tipo}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <!-- REEL -->
+  <section class="section reel">
+    <div class="container reel__inner">
+      <div class="reel__media">
+        <img src="/images/stock/conferencia-publico.jpg" alt="Reel de Perla Machaen en escenario" width="534" height="534" loading="lazy" />
+        <span class="reel__play" aria-hidden="true">▶</span>
+      </div>
+      <div>
+        <span class="eyebrow">Perla en escenario</span>
+        <h2 class="titulo">Una voz que conecta y transforma.</h2>
+        <p class="lead">
+          Cada conferencia está diseñada para inspirar, informar y activar: la audiencia sale con una
+          nueva mirada sobre el hogar, el bienestar y el valor de los espacios.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULARIO BOOKING -->
+  <section class="section booking" id="booking">
+    <div class="container booking__inner">
+      <span class="eyebrow center">Booking</span>
+      <h2 class="titulo center">Solicita a Perla para tu próximo evento.</h2>
+      <p class="lead center">Cuéntanos sobre tu evento y el equipo te responderá a la brevedad.</p>
+
+      <form class="form" name="conferencias" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="conferencias" />
+        <p class="hidden"><label>No llenar: <input name="bot-field" /></label></p>
+        <div class="form__grid">
+          <label>
+            Nombre
+            <input type="text" name="nombre" required />
+          </label>
+          <label>
+            Empresa / Organización
+            <input type="text" name="empresa" />
+          </label>
+          <label>
+            Correo electrónico
+            <input type="email" name="email" required />
+          </label>
+          <label>
+            País / Ciudad
+            <input type="text" name="ubicacion" />
+          </label>
+          <label>
+            Fecha tentativa del evento
+            <input type="date" name="fecha" />
+          </label>
+          <label>
+            Tipo de evento
+            <select name="tipo-evento">
+              {tiposEvento.map((tipo) => <option value={tipo}>{tipo}</option>)}
+            </select>
+          </label>
+        </div>
+        <label>
+          Cuéntanos sobre el evento
+          <textarea name="mensaje" rows="4" placeholder="Objetivo, audiencia estimada, formato…"></textarea>
+        </label>
+        <button type="submit" class="btn btn--gold btn--lg">Enviar solicitud</button>
+      </form>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.9rem;
+    margin-top: 2rem;
+  }
+
+  .temas__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+  }
+  .tema-card {
+    background: var(--blanco-calido);
+    border-radius: var(--radius);
+    padding: 1.8rem;
+    box-shadow: var(--shadow-card);
+    border-left: 3px solid var(--dorado);
+  }
+  .tema-card__num {
+    font-family: var(--font-display);
+    color: var(--dorado);
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+  }
+  .tema-card h3 {
+    font-size: 1.45rem;
+    margin-block: 0.5rem;
+  }
+  .tema-card p {
+    color: var(--tinta-suave);
+    font-size: 0.97rem;
+  }
+
+  .tipos {
+    background: var(--arena);
+  }
+  .tipos__grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-top: 2.5rem;
+  }
+  .tipo-card {
+    background: var(--negro-verdoso);
+    color: var(--marfil);
+    padding: 0.85rem 1.5rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.92rem;
+  }
+
+  .reel__inner {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .reel__media {
+    position: relative;
+  }
+  .reel__media img {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+  }
+  .reel__play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.4rem;
+    color: #fff;
+    background: rgba(29, 36, 32, 0.25);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  .reel__play:hover {
+    background: rgba(29, 36, 32, 0.45);
+  }
+
+  .booking__inner {
+    max-width: 860px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .booking .lead {
+    margin-inline: auto;
+    text-align: center;
+  }
+  .form {
+    width: 100%;
+    margin-top: 2.5rem;
+    background: var(--blanco-calido);
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+  .form__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .form label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    color: var(--negro-verdoso-suave);
+  }
+  .form input,
+  .form select,
+  .form textarea {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 0.98rem;
+    padding: 0.8rem 1rem;
+    border: 1px solid rgba(29, 36, 32, 0.15);
+    border-radius: 10px;
+    background: #fff;
+    color: var(--negro-verdoso);
+  }
+  .form input:focus,
+  .form select:focus,
+  .form textarea:focus {
+    outline: none;
+    border-color: var(--dorado);
+    box-shadow: 0 0 0 3px rgba(185, 152, 78, 0.15);
+  }
+  .form .btn {
+    align-self: flex-start;
+  }
+  .hidden {
+    display: none;
+  }
+
+  @media (max-width: 860px) {
+    .temas__grid,
+    .reel__inner,
+    .form__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

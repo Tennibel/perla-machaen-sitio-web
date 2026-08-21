@@ -1,0 +1,10 @@
+# dependencias
+node_modules/
+
+# build
+dist/
+.astro/
+
+# logs y sistema
+*.log
+.DS_Store

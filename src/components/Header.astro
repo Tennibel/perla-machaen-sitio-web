@@ -1,0 +1,380 @@
+---
+import { navItems, siteInfo } from '../data/site';
+
+// Marca la ruta activa comparando contra la URL actual
+const currentPath = Astro.url.pathname;
+
+// Nav principal (corta, como Vilma) y secundaria
+const navPrincipal = navItems.filter((item) =>
+  ['/', '/metodo-lisi/', '/casas-saludables/', '/conferencias/', '/sobre-perla/'].includes(item.href)
+);
+const navSecundaria = navItems.filter(
+  (item) =>
+    !['/', '/metodo-lisi/', '/casas-saludables/', '/conferencias/', '/sobre-perla/'].includes(item.href)
+);
+---
+
+<header class="header" id="header">
+  <!-- Barra superior promocional -->
+  <div class="header__topbar">
+    <div class="container header__topbar-inner">
+      <p class="topbar__msg">
+        <span class="topbar__badge">Nuevo</span>
+        El futuro del hogar es saludable — abre la edición del Método LISI.
+      </p>
+      <a href="/metodo-lisi/" class="topbar__cta">Aplicar ahora →</a>
+    </div>
+  </div>
+
+  <!-- Barra principal -->
+  <div class="header__main">
+    <div class="container header__bar">
+      <a href="/" class="brand" aria-label={`${siteInfo.nombre} — inicio`}>
+        <img
+          src="/images/Logo_Perla_Machaen.png"
+          alt={`${siteInfo.nombre} logo`}
+          class="brand__logo"
+          width="150"
+          height="67"
+        />
+      </a>
+
+      <nav class="nav" aria-label="Navegación principal">
+        <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">
+          <span class="nav__toggle-line"></span>
+          <span class="nav__toggle-line"></span>
+          <span class="nav__toggle-line"></span>
+        </button>
+
+        <ul class="nav__list" id="navMenu">
+          {
+            navPrincipal.map((item) => {
+              const activo = currentPath === item.href;
+              return (
+                <li>
+                  <a href={item.href} class:list={['nav__link', { 'is-active': activo }]}>
+                    {item.label}
+                  </a>
+                </li>
+              );
+            })
+          }
+          {
+            navSecundaria.length > 0 && (
+              <li class="nav__dropdown">
+                <button class="nav__link nav__more" aria-expanded="false">Más <span aria-hidden="true">▾</span></button>
+                <ul class="nav__submenu">
+                  {
+                    navSecundaria.map((item) => {
+                      const activo = currentPath === item.href;
+                      return (
+                        <li>
+                          <a href={item.href} class:list={[{ 'is-active': activo }]}>
+                            {item.label}
+                          </a>
+                        </li>
+                      );
+                    })
+                  }
+                </ul>
+              </li>
+            )
+          }
+        </ul>
+      </nav>
+
+      <div class="header__cta">
+        <a href="/conferencias/" class="header__btn header__btn--ghost">Invita a Perla</a>
+        <a href="/metodo-lisi/" class="header__btn header__btn--solid">Conoce el Método LISI</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const menu = document.getElementById('navMenu');
+  toggle?.addEventListener('click', () => {
+    const abierto = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!abierto));
+    menu?.classList.toggle('is-open', !abierto);
+    document.body.classList.toggle('no-scroll', !abierto);
+  });
+
+  const more = document.querySelector('.nav__more');
+  more?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const dd = more.closest('.nav__dropdown');
+    const abierto = more.getAttribute('aria-expanded') === 'true';
+    more.setAttribute('aria-expanded', String(!abierto));
+    dd?.classList.toggle('is-open', !abierto);
+  });
+</script>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    background: rgba(250, 246, 238, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 1px 0 rgba(29, 36, 32, 0.08);
+  }
+
+  /* === Barra superior promocional === */
+  .header__topbar {
+    background: linear-gradient(90deg, var(--negro-verdoso), var(--negro-verdoso-suave));
+    color: var(--marfil);
+    font-size: 0.82rem;
+    letter-spacing: 0.02em;
+  }
+  .header__topbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding-block: 0.45rem;
+  }
+  .topbar__msg {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin: 0;
+  }
+  .topbar__badge {
+    background: var(--dorado);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.55rem;
+    border-radius: var(--radius-pill);
+  }
+  .topbar__cta {
+    color: var(--dorado-suave);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+  }
+  .topbar__cta:hover {
+    color: #fff;
+  }
+
+  /* === Barra principal === */
+  .header__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 0.55rem;
+  }
+
+  .brand__logo {
+    width: 142px;
+    height: auto;
+  }
+
+  .nav__list {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.3rem, 1.5vw, 1.4rem);
+    list-style: none;
+    margin: 0;
+  }
+
+  .nav__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-family: var(--font-body);
+    font-size: 0.86rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--negro-verdoso);
+    padding: 0.5rem 0.15rem;
+    position: relative;
+    white-space: nowrap;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .nav__link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: var(--dorado);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+  }
+
+  .nav__link:hover::after,
+  .nav__link.is-active::after {
+    width: 100%;
+  }
+
+  .nav__link.is-active {
+    color: var(--salvia-oscura);
+    font-weight: 500;
+  }
+
+  /* Dropdown "Más" */
+  .nav__dropdown {
+    position: relative;
+  }
+  .nav__submenu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 230px;
+    margin: 0;
+    padding: 0.6rem;
+    list-style: none;
+    background: var(--blanco-calido);
+    border: 1px solid rgba(29, 36, 32, 0.08);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: all 0.25s ease;
+  }
+  .nav__dropdown.is-open .nav__submenu,
+  .nav__dropdown:hover .nav__submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .nav__submenu a {
+    display: block;
+    padding: 0.55rem 0.8rem;
+    font-size: 0.86rem;
+    color: var(--negro-verdoso);
+    border-radius: 10px;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .nav__submenu a:hover,
+  .nav__submenu a.is-active {
+    background: var(--arena);
+    color: var(--salvia-oscura);
+  }
+
+  /* === Botones de CTA === */
+  .header__cta {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    flex-shrink: 0;
+  }
+  .header__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.65rem 1.15rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+  .header__btn--solid {
+    background: var(--dorado);
+    color: #fff;
+  }
+  .header__btn--solid:hover {
+    background: var(--negro-verdoso);
+    color: var(--dorado-suave);
+  }
+  .header__btn--ghost {
+    background: transparent;
+    color: var(--negro-verdoso);
+    border-color: rgba(29, 36, 32, 0.3);
+  }
+  .header__btn--ghost:hover {
+    background: var(--negro-verdoso);
+    border-color: var(--negro-verdoso);
+    color: var(--marfil);
+  }
+
+  /* === Toggle móvil === */
+  .nav__toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.4rem;
+  }
+  .nav__toggle-line {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--negro-verdoso);
+    margin: 5px 0;
+    transition: 0.3s ease;
+  }
+
+  @media (max-width: 1060px) {
+    .header__btn--ghost {
+      display: none;
+    }
+  }
+
+  @media (max-width: 880px) {
+    .header__topbar-inner {
+      flex-direction: column;
+      gap: 0.2rem;
+      padding-block: 0.6rem;
+      text-align: center;
+    }
+    .nav__toggle {
+      display: block;
+    }
+    .nav__list {
+      position: fixed;
+      inset: 0;
+      top: 0;
+      background: var(--marfil);
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 5rem var(--gutter) 2rem;
+      gap: 0.2rem;
+      transform: translateX(100%);
+      transition: transform 0.35s ease;
+      overflow-y: auto;
+      z-index: 150;
+    }
+    .nav__list.is-open {
+      transform: translateX(0);
+    }
+    .nav__link {
+      font-size: 1.15rem;
+      padding: 0.85rem 0;
+    }
+    .nav__submenu {
+      position: static;
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      box-shadow: none;
+      border: none;
+      padding-left: 1rem;
+    }
+    .header__cta {
+      display: none;
+    }
+    body.no-scroll {
+      overflow: hidden;
+    }
+  }
+</style>

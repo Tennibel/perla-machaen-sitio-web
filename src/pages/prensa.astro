@@ -1,0 +1,209 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const categorias = ['Todas', 'Real Estate', 'Wellness Habitat', 'LISI', 'Conferencias', 'Podcasts', 'Liderazgo'];
+
+const apariciones = [
+  { medio: 'Forbes México', titulo: '¿Y si tu hogar pudiera ser un aliado para tu salud?', categoria: 'Wellness Habitat', descripcion: 'Cobertura sobre biohacking aplicado a espacios interiores y los pilares de las casas saludables.' },
+  { medio: 'Forbes México', titulo: 'Esta empresa quiere hacer más saludables los espacios interiores', categoria: 'Wellness Habitat', descripcion: 'La historia de The Wellness Habitat Company y el origen de los espacios saludables.' },
+  { medio: 'Real Estate Market', titulo: 'Real Estate de Longevidad', categoria: 'Real Estate', descripcion: 'La nueva visión del diseño residencial con la salud en el centro del valor inmobiliario.' },
+  { medio: 'México Design', titulo: 'The Wellness Habitat, la pureza de los espacios íntimos', categoria: 'Wellness Habitat', descripcion: 'La propuesta de espacios interiores saludables en el contexto del diseño.' },
+  { medio: 'Podchaser', titulo: 'Perla Machaen, la reina del Real Estate en Miami', categoria: 'Podcasts', descripcion: 'Entrevista que la posiciona como líder de Real Estate, wellness y conferencista.' },
+  { medio: 'Reforma', titulo: 'Liderazgo femenino en el Real Estate', categoria: 'Liderazgo', descripcion: 'Perfil sobre autoridad y trayectoria en una industria de alto nivel.' },
+  { medio: 'Caras', titulo: 'La visionaria del hogar saludable', categoria: 'Liderazgo', descripcion: 'Entrevista sobre la evolución del Real Estate hacia el bienestar.' },
+  { medio: 'Mundo Ejecutivo', titulo: 'La nueva categoría del bienestar inmobiliario', categoria: 'Conferencias', descripcion: 'Cobertura de su rol como conferencista y creadora de categoría.' },
+];
+---
+
+<Layout
+  title="Prensa"
+  description="Medios, podcasts y entrevistas que reconocen la visión de Perla Machaen."
+>
+  <PageHero
+    eyebrow="Prensa y autoridad"
+    title="Una visión reconocida por medios de negocios, diseño, bienestar y Real Estate."
+    subtitle="Forbes, Real Estate Market, México Design, Caras, Reforma, Mundo Ejecutivo y podcasts han documentado la evolución de Perla Machaen."
+  />
+
+  <!-- LOGOS -->
+  <section class="section logos">
+    <div class="container logos__inner">
+      <span class="logos__item">Forbes</span>
+      <span class="logos__item">Real Estate Market</span>
+      <span class="logos__item">México Design</span>
+      <span class="logos__item">Caras</span>
+      <span class="logos__item">Reforma</span>
+      <span class="logos__item">Mundo Ejecutivo</span>
+    </div>
+  </section>
+
+  <!-- GALERÍA CON FILTROS -->
+  <section class="section galeria">
+    <div class="container">
+      <div class="galeria__head">
+        <span class="eyebrow center">Apariciones</span>
+        <h2 class="titulo center">Entrevistas, podcasts y cobertura de prensa.</h2>
+      </div>
+
+      <div class="filtros" id="filtros" role="tablist">
+        {
+          categorias.map((cat, i) => (
+            <button class:list={['filtro', { 'is-active': i === 0 }]} data-categoria={cat === 'Todas' ? 'Todas' : cat}>
+              {cat}
+            </button>
+          ))
+        }
+      </div>
+
+      <div class="galeria__grid" id="galeria">
+        {
+          apariciones.map((a) => (
+            <article class="apariencia" data-categoria={a.categoria}>
+              <span class="apariencia__medio">{a.medio}</span>
+              <h3>{a.titulo}</h3>
+              <p>{a.descripcion}</p>
+              <span class="apariencia__link">Ver entrevista →</span>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    eyebrow="Kit de prensa"
+    title="¿Eres medio o aliado?"
+    text="Accede a material sobre Perla, su biografía, fotos y datos para coberturas o alianzas estratégicas."
+    primaryLabel="Prensa y alianzas"
+    primaryHref="/contacto/"
+  />
+</Layout>
+
+<script>
+  const filtros = Array.from(document.querySelectorAll<HTMLButtonElement>('.filtro'));
+  const tarjetas = Array.from(document.querySelectorAll<HTMLElement>('.apariencia'));
+
+  filtros.forEach((filtro) => {
+    filtro.addEventListener('click', () => {
+      filtros.forEach((f) => f.classList.remove('is-active'));
+      filtro.classList.add('is-active');
+
+      const categoria = filtro.dataset.categoria;
+      tarjetas.forEach((tarjeta) => {
+        const visible = categoria === 'Todas' || tarjeta.dataset.categoria === categoria;
+        tarjeta.style.display = visible ? '' : 'none';
+      });
+    });
+  });
+</script>
+
+<style>
+  .logos__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem 3rem;
+  }
+  .logos__item {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2.6vw, 2.1rem);
+    color: var(--negro-verdoso-suave);
+    opacity: 0.75;
+    transition: opacity 0.3s ease;
+  }
+  .logos__item:hover {
+    opacity: 1;
+  }
+
+  .galeria {
+    background: var(--arena);
+  }
+  .galeria__head {
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .filtros {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-bottom: 2.5rem;
+  }
+  .filtro {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    padding: 0.55rem 1.2rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(29, 36, 32, 0.2);
+    background: transparent;
+    color: var(--negro-verdoso);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .filtro:hover {
+    background: var(--dorado-suave);
+    border-color: var(--dorado-suave);
+  }
+  .filtro.is-active {
+    background: var(--negro-verdoso);
+    color: var(--marfil);
+    border-color: var(--negro-verdoso);
+  }
+
+  .galeria__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  .apariencia {
+    background: var(--blanco-calido);
+    border-radius: var(--radius);
+    padding: 1.7rem;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: transform 0.3s ease;
+  }
+  .apariencia:hover {
+    transform: translateY(-5px);
+  }
+  .apariencia__medio {
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--dorado);
+    font-weight: 500;
+  }
+  .apariencia h3 {
+    font-size: 1.3rem;
+    line-height: 1.3;
+  }
+  .apariencia p {
+    color: var(--tinta-suave);
+    font-size: 0.93rem;
+    flex-grow: 1;
+  }
+  .apariencia__link {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--salvia-oscura);
+  }
+
+  @media (max-width: 900px) {
+    .galeria__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 560px) {
+    .galeria__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

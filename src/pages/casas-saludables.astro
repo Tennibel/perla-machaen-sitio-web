@@ -1,0 +1,246 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const pilares = [
+  { icono: '💨', titulo: 'Aire', texto: 'Calidad del aire interior, ventilación y control de contaminantes que respiras a diario.' },
+  { icono: '💧', titulo: 'Agua', texto: 'Agua libre de contaminantes para beber, cocinar y asearse con seguridad.' },
+  { icono: '☀️', titulo: 'Luz', texto: 'Iluminación natural y regulada, y control de luz artificial que afecta tu descanso.' },
+  { icono: '🪵', titulo: 'Materiales', texto: 'Materiales no tóxicos que no liberan COV ni compuestos dañinos al ambiente.' },
+  { icono: '📡', titulo: 'Electromagnetismo', texto: 'Control de campos electromagnéticos y entornos de baja contaminación.' },
+  { icono: '🌿', titulo: 'Geobiología y hábitos', texto: 'Influencias del entorno y rutinas que sostienen tu salud, energía y descanso.' },
+];
+
+const riesgos = [
+  'Moho y humedad',
+  'COV en pintura y muebles',
+  'Luz azul y mala iluminación',
+  'Mala ventilación',
+  'Ruido constante',
+  'Contaminantes invisibles',
+];
+
+const checklist = [
+  '¿Ventilas tu casa al menos 10 minutos al día?',
+  '¿Controlas la humedad de tus espacios?',
+  '¿Tu agua pasa por algún filtro de calidad?',
+  '¿Reduces la luz artificial antes de dormir?',
+  '¿Revisas los materiales de pintura y mobiliario?',
+  '¿Tienes plantas que apoyen el aire interior?',
+];
+---
+
+<Layout
+  title="Casas Saludables"
+  description="Descubre qué hace que una casa sea saludable y cómo tu hogar puede convertirse en tu mayor aliado de bienestar."
+>
+  <PageHero
+    eyebrow="Casas Saludables"
+    title="Tu hogar puede ser tu mayor aliado de bienestar."
+    subtitle="Aprende cómo el aire, el agua, la luz y los materiales de tu espacio influyen en tu salud, tu energía y tu longevidad."
+    image="/images/stock/hogar-calido.jpg"
+    imageAlt="Interior de casa saludable con luz natural"
+  >
+    <div class="hero-actions">
+      <a href="#checklist" class="btn btn--gold btn--lg">Descubre cómo funciona</a>
+      <a href="/metodo-lisi/" class="btn btn--outline btn--lg">Convertirlo en profesión</a>
+    </div>
+  </PageHero>
+
+  <!-- QUÉ ES -->
+  <section class="section que-es">
+    <div class="container que-es__grid">
+      <div>
+        <span class="eyebrow">Qué es una casa saludable</span>
+        <h2 class="titulo">Un hogar que cuida de ti, no al revés.</h2>
+      </div>
+      <div>
+        <p class="lead">
+          Una casa saludable no se define solo por su estética: es un espacio que cuida el aire que
+          respiras, el agua que tomas, la luz que te regula, los materiales que te rodean, el descanso,
+          el ruido y tus hábitos.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RIESGOS INVISIBLES -->
+  <section class="section riesgos">
+    <div class="container">
+      <span class="eyebrow center">Riesgos invisibles</span>
+      <h2 class="titulo center">Lo que no ves puede estar afectando tu salud.</h2>
+      <div class="riesgos__grid">
+        {riesgos.map((r) => <span class="riesgo-card">{r}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 PILARES -->
+  <section class="section pilares">
+    <div class="container">
+      <span class="eyebrow center">Bienestar espacial</span>
+      <h2 class="titulo center">Los 6 pilares de una casa que te apoya.</h2>
+      <div class="pilares__grid">
+        {
+          pilares.map((p) => (
+            <article class="pilar-card">
+              <span class="pilar-card__icono">{p.icono}</span>
+              <h3>{p.titulo}</h3>
+              <p>{p.texto}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CHECKLIST -->
+  <section class="section checklist" id="checklist">
+    <div class="container checklist__grid">
+      <div>
+        <span class="eyebrow">Checklist inicial</span>
+        <h2 class="titulo">¿Qué tan saludable es tu hogar hoy?</h2>
+        <p class="lead">
+          Empieza con un mini diagnóstico. Si respondes «no» a varias, tu casa tiene oportunidades
+          para convertirse en un verdadero aliado de tu bienestar.
+        </p>
+      </div>
+      <div class="checklist__box">
+        {
+          checklist.map((item) => (
+            <label class="check-item">
+              <input type="checkbox" />
+              <span>{item}</span>
+            </label>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    eyebrow="Puente a LISI"
+    title="Aprender esto puede convertirse en una profesión."
+    text="Convierte tu interés por las casas saludables en una nueva carrera con el Método LISI."
+    primaryLabel="Conocer el Método LISI"
+    primaryHref="/metodo-lisi/"
+    secondaryLabel="Descargar checklist"
+    secondaryHref="/contacto/"
+  />
+</Layout>
+
+<style>
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.9rem;
+    margin-top: 2rem;
+  }
+
+  .que-es__grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+  .que-es__grid .lead {
+    margin-top: 0.5rem;
+  }
+
+  .riesgos {
+    background: var(--arena);
+  }
+  .riesgos__grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-top: 2.5rem;
+  }
+  .riesgo-card {
+    background: var(--blanco-calido);
+    border: 1px solid rgba(29, 36, 32, 0.06);
+    padding: 0.9rem 1.4rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.92rem;
+    box-shadow: var(--shadow-suave);
+  }
+
+  .pilares__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+  }
+  .pilar-card {
+    background: var(--blanco-calido);
+    border-radius: var(--radius);
+    padding: 1.8rem;
+    box-shadow: var(--shadow-card);
+    border: 1px solid rgba(29, 36, 32, 0.05);
+    transition: transform 0.3s ease;
+  }
+  .pilar-card:hover {
+    transform: translateY(-5px);
+  }
+  .pilar-card__icono {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.8rem;
+  }
+  .pilar-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .pilar-card p {
+    color: var(--tinta-suave);
+    font-size: 0.95rem;
+  }
+
+  .checklist__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  .checklist__box {
+    background: var(--blanco-calido);
+    border-radius: var(--radius);
+    padding: 1.8rem;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    cursor: pointer;
+    font-size: 0.98rem;
+    color: var(--negro-verdoso-suave);
+  }
+  .check-item input {
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-top: 0.2rem;
+    accent-color: var(--salvia-oscura);
+  }
+
+  @media (max-width: 900px) {
+    .que-es__grid,
+    .checklist__grid {
+      grid-template-columns: 1fr;
+    }
+    .pilares__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 600px) {
+    .pilares__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

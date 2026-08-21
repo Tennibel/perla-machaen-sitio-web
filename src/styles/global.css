@@ -1,0 +1,241 @@
+/* ============================================================
+   PERLA MACHAEN — Sistema de estilo global
+   Lujo consciente: marfil, arena, verde salvia, dorado suave,
+   blanco cálido y negro verdoso. Tipografías editoriales.
+   ============================================================ */
+
+:root {
+  /* Paleta */
+  --marfil: #faf6ee;
+  --arena: #ece4d3;
+  --arena-oscura: #ddd2bd;
+  --salvia: #7c8f73;
+  --salvia-oscura: #55644e;
+  --dorado: #b9984e;
+  --dorado-suave: #d8c08a;
+  --blanco-calido: #fdfbf7;
+  --negro-verdoso: #1d2420;
+  --negro-verdoso-suave: #2c3530;
+  --tinta-suave: #5c635c;
+
+  /* Tipografías */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Jost', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Sombras y bordes */
+  --shadow-suave: 0 20px 60px rgba(29, 36, 32, 0.08);
+  --shadow-card: 0 12px 40px rgba(29, 36, 32, 0.10);
+  --radius: 18px;
+  --radius-pill: 999px;
+
+  /* Espaciado */
+  --section: clamp(4rem, 9vw, 7.5rem);
+  --gutter: clamp(1.25rem, 4vw, 4rem);
+  --maxw: 1200px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: var(--negro-verdoso);
+  background-color: var(--marfil);
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--negro-verdoso);
+}
+
+/* Clases utilitarias genéricas */
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: var(--section);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.78rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--salvia-oscura);
+}
+
+.eyebrow::before {
+  content: '';
+  width: 2rem;
+  height: 1px;
+  background: var(--dorado);
+}
+
+.eyebrow.center::after {
+  content: '';
+  width: 2rem;
+  height: 1px;
+  background: var(--dorado);
+}
+
+.titulo {
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+.lead {
+  color: var(--tinta-suave);
+  font-size: clamp(1rem, 1.4vw, 1.18rem);
+  line-height: 1.8;
+  max-width: 62ch;
+}
+
+.serif-accent {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--salvia-oscura);
+}
+
+/* Accesibilidad */
+:focus-visible {
+  outline: 2px solid var(--dorado);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--dorado-suave);
+  color: var(--negro-verdoso);
+}
+
+/* Utilidades de animación de entrada */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ============================================================
+   Botones
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.btn--gold {
+  background: var(--dorado);
+  color: #fff;
+}
+.btn--gold:hover {
+  background: var(--negro-verdoso);
+  color: var(--dorado-suave);
+}
+
+.btn--dark {
+  background: var(--negro-verdoso);
+  color: var(--marfil);
+}
+.btn--dark:hover {
+  background: var(--salvia-oscura);
+  color: #fff;
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--negro-verdoso);
+  border-color: var(--negro-verdoso);
+}
+.btn--outline:hover {
+  background: var(--negro-verdoso);
+  color: var(--marfil);
+}
+
+.btn--outline-light {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.6);
+}
+.btn--outline-light:hover {
+  background: #fff;
+  color: var(--negro-verdoso);
+}
+
+.btn--light {
+  background: #fff;
+  color: var(--negro-verdoso);
+}
+.btn--light:hover {
+  background: var(--dorado-suave);
+  color: var(--negro-verdoso);
+}
+
+.btn--lg {
+  padding: 1rem 2rem;
+  font-size: 0.85rem;
+}

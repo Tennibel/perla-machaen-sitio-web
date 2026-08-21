@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const recursos = [
+  { categoria: 'Casas saludables', titulo: 'Qué es una casa saludable y por qué será el nuevo lujo', lectura: '6 min' },
+  { categoria: 'Bienestar espacial', titulo: 'Los 6 pilares de una casa que apoya tu bienestar', lectura: '8 min' },
+  { categoria: 'Biohacking', titulo: 'Cómo afecta la luz artificial a tu descanso', lectura: '5 min' },
+  { categoria: 'Salud ambiental', titulo: 'Moho, humedad y fatiga: señales invisibles en el hogar', lectura: '7 min' },
+  { categoria: 'Materiales', titulo: 'Materiales no tóxicos: cómo elegirlos sin remodelar toda tu casa', lectura: '5 min' },
+  { categoria: 'Real Estate', titulo: 'Real Estate de Longevidad: la nueva variable de valor inmobiliario', lectura: '6 min' },
+  { categoria: 'Profesión LISI', titulo: 'Cómo un realtor puede diferenciarse con casas saludables', lectura: '4 min' },
+  { categoria: 'Profesión LISI', titulo: 'Qué hace un consultor LISI y para quién es esta profesión', lectura: '6 min' },
+  { categoria: 'Cocreación', titulo: 'De la escasez a la cocreación: mentalidad, fe y acción', lectura: '5 min' },
+];
+---
+
+<Layout
+  title="Recursos"
+  description="Recursos, artículos y guías sobre casas saludables, bienestar, longevidad y la profesión LISI."
+>
+  <PageHero
+    eyebrow="Recursos"
+    title="Aprende y profundiza sobre el hogar saludable."
+    subtitle="Guías, artículos y contenido educativo sobre casas saludables, bienestar, longevidad y la profesión LISI."
+  />
+
+  <section class="section listado">
+    <div class="container">
+      <div class="listado__grid">
+        {
+          recursos.map((r) => (
+            <article class="recurso">
+              <span class="recurso__categoria">{r.categoria}</span>
+              <h3>{r.titulo}</h3>
+              <span class="recurso__lectura">{r.lectura} · Leer más →</span>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    eyebrow="Aprende más"
+    title="¿Quieres llevar esto a otro nivel?"
+    text="Convierte tu interés por el bienestar espacial en una profesión con el Método LISI."
+    primaryLabel="Conocer el Método LISI"
+    primaryHref="/metodo-lisi/"
+  />
+</Layout>
+
+<style>
+  .listado__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  .recurso {
+    background: var(--blanco-calido);
+    border-radius: var(--radius);
+    padding: 1.7rem;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: transform 0.3s ease;
+  }
+  .recurso:hover {
+    transform: translateY(-5px);
+  }
+  .recurso__categoria {
+    font-size: 0.74rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--dorado);
+    font-weight: 500;
+  }
+  .recurso h3 {
+    font-size: 1.3rem;
+    line-height: 1.3;
+    flex-grow: 1;
+  }
+  .recurso__lectura {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--salvia-oscura);
+  }
+
+  @media (max-width: 900px) {
+    .listado__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 560px) {
+    .listado__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,144 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const hitos = [
+  { etapa: 'Origen y logro', titulo: 'Líder #1 en Real Estate de lujo en Miami', texto: 'Una de las personas más influyentes en la industria, #1 en ventas por más de 11 años consecutivos, condecorada por la Casa Blanca y host de «House Hunters International».' },
+  { etapa: 'Inquietud y descubrimiento', titulo: 'De la propiedad al bienestar del espacio', texto: 'La experiencia con propiedades de alto valor le reveló una verdad: un espacio no solo debe verse bien, debe hacer sentir bien a quien lo habita.' },
+  { etapa: 'Método y misión', titulo: 'La creación de LISI y las casas saludables', texto: 'Fundó The Wellness Habitat Company y creó el Método LISI para profesionalizar el bienestar espacial y abrir una nueva profesión.' },
+  { etapa: 'Movimiento', titulo: 'Comunidad, conferencias y nueva profesión', texto: 'Hoy impulsa un movimiento que une CocreaDoers, conferencias y Real Estate de Longevidad para transformar vidas en Latinoamérica.' },
+];
+---
+
+<Layout
+  title="Sobre Perla"
+  description="La historia de Perla Machaen: del Real Estate de lujo en Miami a la creación de una nueva categoría en casas saludables y bienestar."
+>
+  <PageHero
+    eyebrow="Sobre Perla"
+    title="Empresaria, conferencista y pionera en casas saludables."
+    subtitle="Después de liderar el Real Estate de lujo en Miami, Perla creó una nueva visión: transformar hogares, oficinas y desarrollos en espacios que cuidan la salud."
+    image="/images/Perla_02_VF.jpg"
+    imageAlt="Retrato editorial de Perla Machaen"
+  />
+
+  <!-- HISTORIA / EVOLUCIÓN -->
+  <section class="section historia">
+    <div class="container">
+      <div class="historia__head">
+        <span class="eyebrow center">Su historia</span>
+        <h2 class="titulo center">De vender propiedades a transformar la forma en que habitamos.</h2>
+      </div>
+      <div class="historia__grid">
+        {
+          hitos.map((h, i) => (
+            <article class="hito-card">
+              <span class="hito-card__num">0{i + 1}</span>
+              <span class="hito-card__etapa">{h.etapa}</span>
+              <h3>{h.titulo}</h3>
+              <p>{h.texto}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- MURAL -->
+  <section class="section mural">
+    <div class="container mural__grid">
+      <img src="/images/Perla_02_VF.jpg" alt="Perla Machaen" width="534" height="534" loading="lazy" />
+      <img src="/images/Perla_04_VF.jpg" alt="Perla Machaen en escenario" width="534" height="534" loading="lazy" />
+      <img src="/images/Perla_06_VF.jpg" alt="Perla Machaen retrato editorial" width="534" height="534" loading="lazy" />
+    </div>
+  </section>
+
+  <CtaBand
+    eyebrow="Sobre Perla"
+    title="Conoce su método y llévala a tu escenario."
+    text="Descubre el Método LISI o invita a Perla como conferencista para tu próximo evento."
+    primaryLabel="Conoce el Método LISI"
+    primaryHref="/metodo-lisi/"
+    secondaryLabel="Invita a Perla"
+    secondaryHref="/conferencias/"
+  />
+</Layout>
+
+<style>
+  .historia__head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .historia__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+  .hito-card {
+    background: var(--blanco-calido);
+    border-radius: var(--radius);
+    padding: 1.7rem;
+    box-shadow: var(--shadow-card);
+    border-top: 3px solid var(--dorado);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .hito-card__num {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--dorado);
+    line-height: 1;
+  }
+  .hito-card__etapa {
+    font-size: 0.74rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--salvia-oscura);
+    font-weight: 500;
+  }
+  .hito-card h3 {
+    font-size: 1.35rem;
+    line-height: 1.25;
+  }
+  .hito-card p {
+    color: var(--tinta-suave);
+    font-size: 0.93rem;
+  }
+
+  .mural {
+    background: var(--arena);
+  }
+  .mural__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  .mural__grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+  }
+
+  @media (max-width: 900px) {
+    .historia__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .mural__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 560px) {
+    .historia__grid,
+    .mural__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

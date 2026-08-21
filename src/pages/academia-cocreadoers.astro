@@ -1,0 +1,220 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const paraQuien = [
+  'Quienes quieren transformar su realidad',
+  'Emprendedores que buscan propósito',
+  'Personas en búsqueda de mentalidad expansiva',
+  'Líderes que quieren cocrear su vida ideal',
+];
+
+const cursos = [
+  { titulo: 'Cocreación', texto: 'Herramientas para diseñar intencionalmente la vida que quieres cocrear.' },
+  { titulo: 'Hábitos', texto: 'Rutinas y prácticas que sostienen la transformación personal.' },
+  { titulo: 'Transformación personal', texto: 'Mentalidad, fe y acción para pasar de la escasez a la expansión.' },
+];
+---
+
+<Layout
+  title="Academia CocreaDoers"
+  description="CocreaDoers, la academia de Perla Machaen para transformar tu mentalidad, activar tu propósito y cocrear una vida ideal."
+>
+  <PageHero
+    eyebrow="Academia CocreaDoers"
+    title="La academia para cocrear una vida ideal."
+    subtitle="Mentalidad, cocreación y expansión personal: un espacio de transformación de adentro hacia afuera, fundado por Perla Machaen."
+    image="/images/stock/mentoring.jpg"
+    imageAlt="Perla Machaen, fundadora de CocreaDoers"
+  >
+    <div class="hero-actions">
+      <a href="#ingreso" class="btn btn--gold btn--lg">Entrar a la academia</a>
+    </div>
+  </PageHero>
+
+  <!-- QUÉ ES -->
+  <section class="section que-es">
+    <div class="container que-es__grid">
+      <div>
+        <span class="eyebrow">Qué es CocreaDoers</span>
+        <h2 class="titulo">Transformación de adentro hacia afuera.</h2>
+      </div>
+      <div>
+        <p class="lead">
+          CocreaDoers es la academia donde Perla enseña mentalidad, cocreación y expansión personal:
+          herramientas prácticas, mentorías y entrenamientos para quienes quieren liderar su propia realidad.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARA QUIÉN -->
+  <section class="section para-quien">
+    <div class="container">
+      <span class="eyebrow center">Para quién es</span>
+      <h2 class="titulo center">Un espacio para quienes deciden transformar su realidad.</h2>
+      <div class="para-quien__grid">
+        {paraQuien.map((p) => <span class="perfil-card">{p}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <!-- CURSOS -->
+  <section class="section cursos">
+    <div class="container">
+      <span class="eyebrow center">Cursos y contenidos</span>
+      <h2 class="titulo center">Una biblioteca de cocreación y hábitos.</h2>
+      <div class="cursos__grid">
+        {
+          cursos.map((c) => (
+            <article class="curso-card">
+              <h3>{c.titulo}</h3>
+              <p>{c.texto}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- COMUNIDAD Y MENTORÍA -->
+  <section class="section comunidad" id="ingreso">
+    <div class="container comunidad__grid">
+      <div class="comunidad__media">
+        <img src="/images/stock/bienestar.jpg" alt="Comunidad CocreaDoers" width="534" height="534" loading="lazy" />
+      </div>
+      <div>
+        <span class="eyebrow">Comunidad y mentorías</span>
+        <h2 class="titulo">No caminas sola.</h2>
+        <p class="lead">
+          Acompañamiento, círculos de aprendizaje y entrenamientos en comunidad para sostener tu
+          transformación y convertir la cocreación en un estilo de vida.
+        </p>
+        <ul class="comunidad__lista">
+          <li>Mentorías y acompañamiento cercano</li>
+          <li>Círculos de aprendizaje colaborativos</li>
+          <li>Entrenamientos prácticos y herramientas</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    eyebrow="CocreaDoers"
+    title="Suma a la comunidad y activa tu propósito."
+    text="Empieza hoy a cocrear la vida y los resultados que imaginaste."
+    primaryLabel="Entrar a CocreaDoers"
+    primaryHref="/contacto/"
+    secondaryLabel="Conocer el Método LISI"
+    secondaryHref="/metodo-lisi/"
+  />
+</Layout>
+
+<style>
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.9rem;
+    margin-top: 2rem;
+  }
+
+  .que-es__grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  .para-quien {
+    background: var(--arena);
+  }
+  .para-quien__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+  .perfil-card {
+    background: var(--blanco-calido);
+    border-radius: var(--radius);
+    padding: 1.4rem;
+    text-align: center;
+    font-size: 0.96rem;
+    box-shadow: var(--shadow-card);
+    border: 1px solid rgba(29, 36, 32, 0.05);
+  }
+
+  .cursos__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+  }
+  .curso-card {
+    background: var(--blanco-calido);
+    border-radius: var(--radius);
+    padding: 1.8rem;
+    border-top: 3px solid var(--salvia);
+    box-shadow: var(--shadow-card);
+  }
+  .curso-card h3 {
+    font-size: 1.45rem;
+    margin-bottom: 0.5rem;
+  }
+  .curso-card p {
+    color: var(--tinta-suave);
+    font-size: 0.95rem;
+  }
+
+  .comunidad {
+    background: var(--blanco-calido);
+  }
+  .comunidad__grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .comunidad__media img {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+  }
+  .comunidad__lista {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    margin-top: 1.5rem;
+  }
+  .comunidad__lista li {
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--negro-verdoso-suave);
+  }
+  .comunidad__lista li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--salvia);
+  }
+
+  @media (max-width: 900px) {
+    .que-es__grid,
+    .comunidad__grid {
+      grid-template-columns: 1fr;
+    }
+    .para-quien__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .cursos__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 560px) {
+    .para-quien__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

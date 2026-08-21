@@ -1,0 +1,620 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteInfo, pruebaInmediata, mediosLogos, rutasSegmentadas, temasConferencia } from '../data/site';
+---
+
+<Layout
+  title="Inicio"
+  description={siteInfo.descripcion}
+>
+  <!-- ===== HERO (video full-width de fondo) ===== -->
+  <section class="hero">
+    <video class="hero__video" autoplay muted loop playsinline preload="metadata" poster="/images/Perla_Machaen-Slide_final.png" aria-hidden="true">
+      <source src="/el-origen.mp4" type="video/mp4" />
+    </video>
+    <div class="hero__overlay" aria-hidden="true"></div>
+
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <span class="hero__kicker">Empresaria & Conferencista · Casas Saludables · Longevidad</span>
+        <h1 class="hero__title">El futuro del hogar<br />es <em>saludable</em>.</h1>
+        <p class="hero__sub">
+          Perla Machaen une real estate, longevidad y bienestar para enseñar una nueva manera de
+          habitar, invertir y convertir las casas saludables en profesión.
+        </p>
+        <div class="hero__cta">
+          <a href="/metodo-lisi/" class="btn btn--gold btn--lg">Conoce el Método LISI</a>
+          <a href="/conferencias/" class="btn btn--light btn--lg">Invita a Perla</a>
+        </div>
+        <ul class="hero__proof">
+          {
+            pruebaInmediata.map((item) => (
+              <li>{item}</li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div class="hero__scroll" aria-hidden="true">
+      <span></span>
+    </div>
+  </section>
+
+  <!-- ===== LA EVOLUCIÓN ===== -->
+  <section class="section evolucion">
+    <div class="container evolucion__grid">
+      <div class="evolucion__text">
+        <span class="eyebrow">La evolución</span>
+        <h2 class="titulo">De vender propiedades a transformar la forma en que <span class="serif-accent">habitamos</span>.</h2>
+        <p class="lead">
+          Durante más de una década, Perla Machaen construyó autoridad en el Real Estate de lujo en Miami.
+          Pero su visión evolucionó: una casa no solo debe verse bien; también debe ayudarte a respirar
+          mejor, descansar mejor, vivir mejor y aumentar su valor desde el bienestar.
+        </p>
+        <a href="/sobre-perla/" class="btn btn--dark">Conoce su historia</a>
+      </div>
+      <div class="evolucion__mural">
+        <img src="/images/Perla_02_VF.jpg" alt="Perla Machaen en un espacio luminoso" width="534" height="534" loading="lazy" />
+        <img src="/images/Perla_04_VF.jpg" alt="Perla Machaen en escenario editorial" width="534" height="534" loading="lazy" />
+        <img src="/images/Perla_06_VF.jpg" alt="Perla Machaen retrato" width="534" height="534" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LOS 3 MUNDOS ===== -->
+  <section class="section mundos">
+    <div class="container">
+      <div class="mundos__head">
+        <span class="eyebrow center">El ecosistema Perla Machaen</span>
+        <h2 class="titulo center">Los 3 mundos de Perla</h2>
+        <p class="lead center">Una marca paraguas, tres caminos que transforman espacios, vidas y profesiones.</p>
+      </div>
+      <div class="mundos__grid">
+        <article class="mundo card">
+          <span class="mundo__num">01</span>
+          <h3>Método LISI</h3>
+          <p>Aprende a identificar, regenerar y monetizar espacios saludables, convirtiéndote en consultor certificado.</p>
+          <a href="/metodo-lisi/" class="mundo__link">Aplicar al método →</a>
+        </article>
+        <article class="mundo card">
+          <span class="mundo__num">02</span>
+          <h3>Casas Saludables</h3>
+          <p>Descubre cómo tu hogar puede apoyar tu salud, energía y longevidad con aire, agua, luz y materiales conscientes.</p>
+          <a href="/casas-saludables/" class="mundo__link">Aprender más →</a>
+        </article>
+        <article class="mundo card">
+          <span class="mundo__num">03</span>
+          <h3>Academia CocreaDoers</h3>
+          <p>Transformación personal, mentalidad y comunidad para cocrear una nueva realidad de adentro hacia afuera.</p>
+          <a href="/academia-cocreadoers/" class="mundo__link">Entrar a la academia →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MÉTODO LISI ===== -->
+  <section class="section lisi">
+    <div class="container lisi__grid">
+      <div class="lisi__media">
+        <img src="/images/Condo_03_Ok.jpg" alt="Interior saludable luminoso" width="732" height="394" loading="lazy" />
+        <div class="lisi__chip">
+          <strong>LISI</strong>
+          <span>Living In Spaces of Inspiration</span>
+        </div>
+      </div>
+      <div class="lisi__content">
+        <span class="eyebrow">Método LISI</span>
+        <h2 class="titulo">Aprende a convertir hogares saludables en una <span class="serif-accent">nueva profesión</span>.</h2>
+        <p class="lead">
+          LISI no es otro curso: es una metodología profesional para evaluar los factores invisibles del
+          espacio — aire, agua, luz, materiales, humedad, ruido, hábitos y bienestar interior — y
+          convertirlos en una consultoría con valor real.
+        </p>
+        <ul class="lisi__lista">
+          <li>Diagnóstico del espacio y factores invisibles</li>
+          <li>Hábitos ambientales y criterios de bienestar</li>
+          <li>Oportunidad profesional para realtors, arquitectos y coaches</li>
+        </ul>
+        <a href="/metodo-lisi/" class="btn btn--gold btn--lg">Aplicar al método</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONFERENCISTA ===== -->
+  <section class="section conferencista">
+    <div class="container conferencista__grid">
+      <div class="conferencista__media">
+        <img src="/images/Perla_04_VF.jpg" alt="Perla Machaen conferencista" width="534" height="534" loading="lazy" />
+      </div>
+      <div class="conferencista__content">
+        <span class="eyebrow">Conferencista</span>
+        <h2 class="titulo">Conferencias que despiertan una nueva <span class="serif-accent">conciencia sobre el hogar</span>.</h2>
+        <p class="lead">
+          Charlas para congresos, empresas y eventos de wellness, arquitectura, real estate y liderazgo.
+          Una voz que conecta el valor del espacio con la salud, la longevidad y la mente.
+        </p>
+        <div class="conferencista__temas">
+          {
+            temasConferencia.slice(0, 3).map((tema) => (
+              <span class="pill">{tema.titulo}</span>
+            ))
+          }
+        </div>
+        <a href="/conferencias/" class="btn btn--outline btn--lg">Solicitar conferencia</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRENSA Y AUTORIDAD ===== -->
+  <section class="section prensa">
+    <div class="container">
+      <div class="prensa__head">
+        <span class="eyebrow center">Prensa y autoridad</span>
+        <h2 class="titulo center">Una visión reconocida por medios de negocios, diseño, bienestar y Real Estate.</h2>
+      </div>
+      <div class="prensa__logos">
+        {
+          mediosLogos.map((medio) => (
+            <span class="prensa__logo">{medio}</span>
+          ))
+        }
+      </div>
+      <div class="prensa__cta">
+        <a href="/prensa/" class="btn btn--dark">Ver apariciones</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA FINAL SEGMENTADO ===== -->
+  <section class="section cta-final">
+    <div class="container">
+      <div class="cta-final__box">
+        <span class="eyebrow center">Encuentra tu ruta</span>
+        <h2 class="titulo center">¿Qué quieres lograr?</h2>
+        <p class="lead center">Cada visitante encuentra una puerta específica según su intención.</p>
+        <div class="cta-final__grid">
+          {
+            rutasSegmentadas.map((ruta) => (
+              <a href={ruta.href} class="ruta card">
+                <span class="ruta__intencion">{ruta.intencion}</span>
+                <span class="ruta__destino">{ruta.destino} →</span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* ===== HERO (video full-width de fondo) ===== */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: var(--negro-verdoso);
+    overflow: hidden;
+  }
+
+  .hero__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(100deg, rgba(29, 36, 32, 0.88) 0%, rgba(29, 36, 32, 0.55) 50%, rgba(29, 36, 32, 0.35) 100%),
+      linear-gradient(0deg, rgba(29, 36, 32, 0.55) 0%, transparent 40%);
+  }
+
+  .hero__inner {
+    position: relative;
+    z-index: 2;
+    padding-top: clamp(4rem, 10vw, 7rem);
+    padding-bottom: clamp(4rem, 10vw, 7rem);
+  }
+
+  .hero__content {
+    max-width: 760px;
+  }
+
+  .hero__kicker {
+    display: inline-block;
+    font-size: 0.8rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--dorado-suave);
+    margin-bottom: 1.4rem;
+  }
+
+  .hero__title {
+    font-size: clamp(2.8rem, 7vw, 5.6rem);
+    font-weight: 500;
+    line-height: 1.02;
+    color: #fff;
+  }
+
+  .hero__title em {
+    font-style: italic;
+    color: var(--dorado-suave);
+  }
+
+  .hero__sub {
+    font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+    color: rgba(253, 251, 247, 0.88);
+    line-height: 1.75;
+    margin-block: 1.6rem 2rem;
+    max-width: 56ch;
+  }
+
+  .hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+  }
+
+  .hero__proof {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem 2.2rem;
+    list-style: none;
+    margin-top: 2.4rem;
+    padding-top: 1.7rem;
+    border-top: 1px solid rgba(253, 251, 247, 0.22);
+  }
+
+  .hero__proof li {
+    position: relative;
+    padding-left: 1.2rem;
+    font-size: 0.88rem;
+    color: rgba(253, 251, 247, 0.85);
+    letter-spacing: 0.02em;
+  }
+  .hero__proof li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--dorado-suave);
+  }
+
+  /* Indicador de scroll */
+  .hero__scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    width: 26px;
+    height: 42px;
+    border: 2px solid rgba(253, 251, 247, 0.6);
+    border-radius: 999px;
+    display: flex;
+    justify-content: center;
+    padding-top: 7px;
+  }
+  .hero__scroll span {
+    width: 4px;
+    height: 10px;
+    background: var(--dorado-suave);
+    border-radius: 999px;
+    animation: scrollPulse 1.8s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    70% {
+      transform: translateY(14px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 0;
+    }
+  }
+
+  /* ===== EVOLUCIÓN ===== */
+  .evolucion {
+    background: var(--blanco-calido);
+    border-block: 1px solid rgba(29, 36, 32, 0.06);
+  }
+  .evolucion__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .evolucion__text .btn {
+    margin-top: 1.8rem;
+  }
+  .evolucion__mural {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 1rem;
+  }
+  .evolucion__mural img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+  }
+  .evolucion__mural img:first-child {
+    grid-row: span 2;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ===== MUNDOS ===== */
+  .mundos {
+    background: var(--marfil);
+  }
+  .mundos__head {
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .mundos__head .lead {
+    margin-inline: auto;
+  }
+
+  .mundos__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .card {
+    background: var(--blanco-calido);
+    border: 1px solid rgba(29, 36, 32, 0.06);
+    border-radius: var(--radius);
+    padding: clamp(1.5rem, 2.5vw, 2.2rem);
+    box-shadow: var(--shadow-card);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 60px rgba(29, 36, 32, 0.14);
+  }
+
+  .mundo__num {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--dorado);
+    letter-spacing: 0.15em;
+  }
+  .mundo h3 {
+    font-size: 1.7rem;
+    margin-block: 0.7rem 0.8rem;
+  }
+  .mundo p {
+    color: var(--tinta-suave);
+    font-size: 0.97rem;
+    margin-bottom: 1.4rem;
+  }
+  .mundo__link {
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    color: var(--salvia-oscura);
+    transition: color 0.3s ease;
+  }
+  .mundo__link:hover {
+    color: var(--dorado);
+  }
+
+  /* ===== LISI ===== */
+  .lisi {
+    background: var(--arena);
+  }
+  .lisi__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .lisi__media {
+    position: relative;
+  }
+  .lisi__media img {
+    width: 100%;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+  }
+  .lisi__chip {
+    position: absolute;
+    bottom: -1.5rem;
+    right: 1.5rem;
+    background: var(--negro-verdoso);
+    color: var(--marfil);
+    padding: 0.9rem 1.2rem;
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-card);
+  }
+  .lisi__chip strong {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--dorado-suave);
+    letter-spacing: 0.1em;
+  }
+  .lisi__chip span {
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: rgba(250, 246, 238, 0.8);
+  }
+
+  .lisi__lista {
+    list-style: none;
+    margin: 1.4rem 0 1.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .lisi__lista li {
+    padding-left: 1.4rem;
+    position: relative;
+    color: var(--negro-verdoso-suave);
+    font-size: 0.97rem;
+  }
+  .lisi__lista li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--salvia-oscura);
+    font-weight: 600;
+  }
+
+  /* ===== CONFERENCISTA ===== */
+  .conferencista {
+    background: var(--negro-verdoso);
+    color: var(--marfil);
+  }
+  .conferencista .eyebrow {
+    color: var(--dorado-suave);
+  }
+  .conferencista .titulo {
+    color: var(--marfil);
+  }
+  .conferencista .lead {
+    color: rgba(250, 246, 238, 0.78);
+  }
+  .conferencista__grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .conferencista__media img {
+    border-radius: var(--radius);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+  }
+  .conferencista__temas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-block: 1.6rem;
+  }
+  .pill {
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    padding: 0.45rem 1rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(216, 192, 138, 0.5);
+    color: var(--dorado-suave);
+    max-width: 46ch;
+  }
+
+  /* ===== PRENSA ===== */
+  .prensa__head {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2.5rem;
+  }
+  .prensa__logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem 2.5rem;
+  }
+  .prensa__logo {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 2.4vw, 1.9rem);
+    color: var(--negro-verdoso-suave);
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+  }
+  .prensa__logo:hover {
+    opacity: 1;
+  }
+  .prensa__cta {
+    text-align: center;
+    margin-top: 2.5rem;
+  }
+
+  /* ===== CTA FINAL ===== */
+  .cta-final {
+    background:
+      linear-gradient(rgba(29, 36, 32, 0.92), rgba(29, 36, 32, 0.92)),
+      url('/images/Condo_01_OkV.jpg') center/cover no-repeat;
+    color: var(--marfil);
+  }
+  .cta-final__box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .cta-final__box .eyebrow {
+    color: var(--dorado-suave);
+  }
+  .cta-final__box .titulo {
+    color: var(--marfil);
+  }
+  .cta-final__box .lead {
+    color: rgba(250, 246, 238, 0.8);
+    margin-inline: auto;
+  }
+  .cta-final__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    width: 100%;
+    margin-top: 2.5rem;
+  }
+  .ruta {
+    background: rgba(250, 246, 238, 0.06);
+    border: 1px solid rgba(250, 246, 238, 0.16);
+    border-radius: var(--radius);
+    padding: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    text-align: left;
+    transition: background 0.3s ease, border-color 0.3s ease;
+  }
+  .ruta:hover {
+    background: rgba(216, 192, 138, 0.14);
+    border-color: var(--dorado-suave);
+  }
+  .ruta__intencion {
+    font-size: 0.76rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--dorado-suave);
+  }
+  .ruta__destino {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--marfil);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .evolucion__grid,
+    .lisi__grid,
+    .conferencista__grid {
+      grid-template-columns: 1fr;
+    }
+    .mundos__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

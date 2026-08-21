@@ -1,4 +1,4 @@
-/* ============================================================
+e/* ============================================================
    PERLA MACHAEN — Sistema de estilo global
    Lujo consciente: marfil, arena, verde salvia, dorado suave,
    blanco cálido y negro verdoso. Tipografías editoriales.
@@ -150,20 +150,56 @@ h5 {
   color: var(--negro-verdoso);
 }
 
-/* Utilidades de animación de entrada */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* ============================================================
+   Scroll reveal — animaciones fluidas al hacer scroll
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(60px);
+  transition:
+    opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
 }
 
-.reveal {
-  animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+.reveal[data-reveal='left'] {
+  transform: translateX(-80px);
+}
+
+.reveal[data-reveal='right'] {
+  transform: translateX(80px);
+}
+
+.reveal[data-reveal='scale'] {
+  transform: scale(0.9);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Imag media reveal con marco de imagen generoso */
+.media-reveal {
+  overflow: hidden;
+}
+
+.media-reveal > img {
+  transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.media-reveal:hover > img {
+  transform: scale(1.06);
+}
+
+/* Respetar preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 /* ============================================================

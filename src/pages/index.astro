@@ -11,7 +11,7 @@ const BASE = import.meta.env.BASE_URL;
 >
   <!-- ===== HERO (video full-width de fondo) ===== -->
   <section class="hero">
-    <video class="hero__video" autoplay muted loop playsinline preload="metadata" poster={`${BASE}images/Perla_Machaen-Slide_final.png`} aria-hidden="true">
+    <video class="hero__video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
       <source src={`${BASE}el-origen.mp4`} type="video/mp4" />
     </video>
     <div class="hero__overlay" aria-hidden="true"></div>
@@ -46,7 +46,7 @@ const BASE = import.meta.env.BASE_URL;
   <!-- ===== LA EVOLUCIÓN ===== -->
   <section class="section evolucion">
     <div class="container evolucion__grid">
-      <div class="evolucion__text">
+      <div class="evolucion__text reveal" data-reveal="left">
         <span class="eyebrow">La evolución</span>
         <h2 class="titulo">De vender propiedades a transformar la forma en que <span class="serif-accent">habitamos</span>.</h2>
         <p class="lead">
@@ -56,7 +56,7 @@ const BASE = import.meta.env.BASE_URL;
         </p>
         <a href="/sobre-perla/" class="btn btn--dark">Conoce su historia</a>
       </div>
-      <div class="evolucion__mural">
+      <div class="evolucion__mural reveal" data-reveal="right">
         <img src={`${BASE}images/Perla_02_VF.jpg`} alt="Perla Machaen en un espacio luminoso" width="534" height="534" loading="lazy" />
         <img src={`${BASE}images/Perla_04_VF.jpg`} alt="Perla Machaen en escenario editorial" width="534" height="534" loading="lazy" />
         <img src={`${BASE}images/Perla_06_VF.jpg`} alt="Perla Machaen retrato" width="534" height="534" loading="lazy" />
@@ -67,12 +67,12 @@ const BASE = import.meta.env.BASE_URL;
   <!-- ===== LOS 3 MUNDOS ===== -->
   <section class="section mundos">
     <div class="container">
-      <div class="mundos__head">
+      <div class="mundos__head reveal">
         <span class="eyebrow center">El ecosistema Perla Machaen</span>
         <h2 class="titulo center">Los 3 mundos de Perla</h2>
         <p class="lead center">Una marca paraguas, tres caminos que transforman espacios, vidas y profesiones.</p>
       </div>
-      <div class="mundos__grid">
+      <div class="mundos__grid reveal">
         <article class="mundo card">
           <span class="mundo__num">01</span>
           <h3>Método LISI</h3>
@@ -98,14 +98,14 @@ const BASE = import.meta.env.BASE_URL;
   <!-- ===== MÉTODO LISI ===== -->
   <section class="section lisi">
     <div class="container lisi__grid">
-      <div class="lisi__media">
+      <div class="lisi__media media-reveal reveal" data-reveal="left">
         <img src={`${BASE}images/Condo_03_Ok.jpg`} alt="Interior saludable luminoso" width="732" height="394" loading="lazy" />
         <div class="lisi__chip">
           <strong>LISI</strong>
           <span>Living In Spaces of Inspiration</span>
         </div>
       </div>
-      <div class="lisi__content">
+      <div class="lisi__content reveal" data-reveal="right">
         <span class="eyebrow">Método LISI</span>
         <h2 class="titulo">Aprende a convertir hogares saludables en una <span class="serif-accent">nueva profesión</span>.</h2>
         <p class="lead">
@@ -126,10 +126,10 @@ const BASE = import.meta.env.BASE_URL;
   <!-- ===== CONFERENCISTA ===== -->
   <section class="section conferencista">
     <div class="container conferencista__grid">
-      <div class="conferencista__media">
+      <div class="conferencista__media media-reveal reveal" data-reveal="scale">
         <img src={`${BASE}images/Perla_04_VF.jpg`} alt="Perla Machaen conferencista" width="534" height="534" loading="lazy" />
       </div>
-      <div class="conferencista__content">
+      <div class="conferencista__content reveal" data-reveal="right">
         <span class="eyebrow">Conferencista</span>
         <h2 class="titulo">Conferencias que despiertan una nueva <span class="serif-accent">conciencia sobre el hogar</span>.</h2>
         <p class="lead">
@@ -151,7 +151,7 @@ const BASE = import.meta.env.BASE_URL;
   <!-- ===== PRENSA Y AUTORIDAD ===== -->
   <section class="section prensa">
     <div class="container">
-      <div class="prensa__head">
+      <div class="prensa__head reveal">
         <span class="eyebrow center">Prensa y autoridad</span>
         <h2 class="titulo center">Una visión reconocida por medios de negocios, diseño, bienestar y Real Estate.</h2>
       </div>
@@ -347,7 +347,7 @@ const BASE = import.meta.env.BASE_URL;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
-    gap: 1rem;
+    gap: 1.2rem;
   }
   .evolucion__mural img {
     width: 100%;
@@ -359,7 +359,11 @@ const BASE = import.meta.env.BASE_URL;
   .evolucion__mural img:first-child {
     grid-row: span 2;
     height: 100%;
+    min-height: 420px;
     object-fit: cover;
+  }
+  .evolucion__mural img:not(:first-child) {
+    min-height: 200px;
   }
 
   /* ===== MUNDOS ===== */
@@ -437,6 +441,9 @@ const BASE = import.meta.env.BASE_URL;
   }
   .lisi__media img {
     width: 100%;
+    aspect-ratio: 4 / 3;
+    height: 100%;
+    object-fit: cover;
     border-radius: var(--radius);
     box-shadow: var(--shadow-card);
   }
@@ -506,6 +513,10 @@ const BASE = import.meta.env.BASE_URL;
     align-items: center;
   }
   .conferencista__media img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    height: 100%;
+    object-fit: cover;
     border-radius: var(--radius);
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
   }
